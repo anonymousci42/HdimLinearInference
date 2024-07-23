@@ -155,32 +155,38 @@ for(i in 1:500)
     X2 = 1*gen_error(n,p1,rho=0.5)
     X = cbind(X1,X2)
     index = 1:2
-    beta = rep(0,p)
-    beta[index] = 0.5
-    beta[(kk+1):(kk+2)] = 1
+    beta1 = rep(0,kk)
+    beta2 = rep(0,kk)
+    beta3 = rep(0,p1)
+    beta1[index] = 0.5
+    beta2[index] = 2*beta1[index] - delta
+    beta3[index] = 1
+    beta = c(beta1,beta2,beta3)
+    #beta[index] = 0.5
+    #beta[(kk+1):(kk+2)] = 1
     epsilon = rnorm(nn,0,1)
-    Y = X%*%beta + epsilon
-    Y = as.vector(Y)
     ###################
     Z1 = ifelse(X1==1,1,0)
     Z2 = ifelse(X1==2,1,0)
     Xnew = cbind(Z1,Z2,X2)
+    Y = Xnew%*%beta + epsilon
+    Y = as.vector(Y)
     p2 = dim(Xnew)[2]
     n = nn = dim(Xnew)[1]
     ###################
     r = kk
     gamma = rep(0,r)
-    gamma[index] = delta
+    #gamma[index] = delta
     C = matrix(rep(0,r*p2),p2,r)
     for(K in 1:kk)
     {
       C[K,K] = 2
       C[K+r,K] = -1
     }
+    C0 = C[1:(2*kk),]
     X = Xnew
     data_X = Xnew
     data_Y = Y
-    Omega = diag(1,p)
   }
   ########################
   if(combine!="True")

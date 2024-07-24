@@ -163,10 +163,11 @@ Infer_partial_pen = function(data_X,data_Y,C0)
   mm = length(MM)
   rm = length(rindex)
   resid = as.vector(Y - X%*%beta_ini - a0)
+  sig = mean(resid^2)
   Z = X[,rindex]
   Zr = Z
   D0 = t(Z)%*%(Z)/n
-  D3 = t(Zr)%*%Zr/n
+  D3 = sig*t(Zr)%*%Zr/n
   Acov = solve(D0)%*%D3%*%solve(t(D0))
   Acovm = Acov[1:mm,1:mm]
   ########Statistic construction

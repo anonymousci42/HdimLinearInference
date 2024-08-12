@@ -2,7 +2,7 @@ source("Functions.R")
 ###############Experiment Setting
 ##n: sample size
 ##p: dimension of covariates
-##M: Working matrix. "I"-Identity matrix; "Hat"-Estimated precision matrix; "True"-True precision matrix Omega.
+##M: Working matrix. "I"-Identity matrix; "Hat"-Estimated precision matrix
 ##deltas: the sequence of the value in the alternative
 ##covstru:Sigma. "AR" AR(1) structure with rho. "BCS"-Blockwise compound symmetry with rho.
 ##combine: "False" single data splitting; "True": double data splitting

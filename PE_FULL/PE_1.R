@@ -120,17 +120,6 @@ for(i in 1:500)
       C[K+p/2,K] = -1
     }
   }
-    if(model == 6)
-    {
-      r = p/2
-      beta = rep(0,p)
-      index = 6*c(1:15)
-      beta[index] =delta*rep(1,15)
-      gamma = rep(0,r)
-      set.seed(1)
-      C = matrix(rnorm(r*p,0,1),p,r)/sqrt(r)
-      set.seed(NULL)
-    }
   ######################data generating
   seeds = 1234+i
   nn = n

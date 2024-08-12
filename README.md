@@ -84,4 +84,7 @@ Folder Real Data Analysis
   
  -transNOAH.Rdata: the real dataset.
    
+Main Folder:
+
+ Run Data_Analysis.R to summarize the results and save the output in the summary folder of each task folder.
 

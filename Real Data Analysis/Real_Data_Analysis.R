@@ -1,8 +1,7 @@
 ###############################################
 # This script takes the transNOAH cancer data set 
 # and applies the test by calculating the 
-# corresponding T statistic from
-# the LREL project, and then proceeds
+# proposed statistic, and then proceeds
 # to draw conclusions. Additionally, it applies
 # comparison tests from Zhong and Chen 2011
 ###############################################

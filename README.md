@@ -83,6 +83,8 @@ Folder Real Data Analysis
   The fourth column is the value of ZC method.
   
  -transNOAH.Rdata: the real dataset.
+
+ -FULL_Y1_probe.csv: GO ids that are still significant after Bonferroni correction, and the probe id with strong marginal signal in each id.
    
 Main Folder:
 

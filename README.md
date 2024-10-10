@@ -84,7 +84,7 @@ Folder Real Data Analysis
   
  -transNOAH.Rdata: the real dataset.
 
- -FULL_Y1_probe.csv: GO ids that are still significant after Bonferroni correction, and the probe id with strong marginal signal in each id.
+ -FULL_Y1_probe.csv: GO ids that are still significant after Bonferroni correction, and the probe id with strong marginal signal in each id. The first column represents the GO ID, and the second column represents the probe id.
    
 Main Folder:
 

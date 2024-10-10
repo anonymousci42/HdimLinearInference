@@ -27,7 +27,7 @@ load("transNOAH.rData")
 # processing data
 tn = transNOAH$GSE50948_series_matrix.txt.gz
 data = assayData(tn)$exprs
-View(Biobase::fData(tn))
+#View(Biobase::fData(tn))
 ####################Process the data if you do not directly load the HDGO.csv file.
 #GOstep1 = Biobase::fData(tn)$`Gene Ontology Molecular Function`
 #uniqueGO1 = unique(unlist(strsplit(unlist(GOstep1), "[^0-9]+")))
@@ -55,7 +55,6 @@ x1 = data[-(which(rownames(data) %in% c("204531_s_at", "211851_x_at"))),]
 
 Record_y1_stat =  NULL
 Record_probe = matrix(rep(0,2),1,2)
-length_id = 2
 for(j in 1:125){
   time0 = Sys.time()
   xpick = Biobase::fData(tn)[which(Biobase::fData(tn)$`Gene Ontology Molecular Function` %like% HDGO$GO_term[j]),]$ID
@@ -63,6 +62,7 @@ for(j in 1:125){
   probe = rownames(x)
   n = ncol(x)
   p = nrow(x)
+  r = p
   C = diag(1,p)
   Omega = diag(1,p)
   xbar = rowSums(x)/n
@@ -96,10 +96,10 @@ for(j in 1:125){
 #####################
   Record_y1_stat = rbind(Record_y1_stat, c(HDGO$GO_term[j],stat_full, stat_full+PE,TstatsZC1[2]))
   print(c(j,HDGO$GO_term[j],stat_full, stat_full+PE,TstatsZC1[2],probe_active))
-#  write.csv(Record_probe,"FULL_Y1_probe.csv")
-#  write.csv(Record_y1_stat,paste("FULL_Y1_stat.csv",sep=""))
+  write.csv(Record_probe,"FULL_Y1_probe.csv")
+  write.csv(Record_y1_stat,paste("FULL_Y1_stat.csv",sep=""))
 }
-#Record_y1_stat = read.csv("FULL_Y1_stat.csv")
+#Record_y1_stat = read.csv("FULL_Y1_stat.csv",row.names = 1)
 ###Without Bonferroni correction
 apply(Record_y1_stat[,-c(1:2)], 2, function(x) HDGO$GO_term[(which(x>=qnorm(1-0.05/2)))])
 apply(Record_y1_stat[,-c(1:2)], 2, function(x) length(which(x>=qnorm(1-0.05/2))))
